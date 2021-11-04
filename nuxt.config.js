@@ -14,9 +14,9 @@ export default {
     ]
   },
 
-  // router: {
-  //   middleware: 'check-auth'
-  // },
+  router: {
+    middleware: ['check-auth']
+  },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [

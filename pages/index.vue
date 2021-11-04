@@ -13,14 +13,14 @@
           </a>
         </div>
         <div class="countLaps">
-          {{item.quantity}} left in stock
+          {{ item.quantity }} left in stock
         </div>
         <div>
-          {{item.description}}
+          {{ item.description }}
         </div>
         <div class="eventCart">
-          ${{item.price}}
-          <button class="buttonAddCart">Add To Cart</button>
+          ${{ item.price }}
+          <button class="buttonAddCart" @click="addCart(key)">Add To Cart</button>
         </div>
       </div>
     </div>
@@ -31,10 +31,8 @@
 import {mapActions, mapGetters} from "vuex";
 
 export default {
-
   data() {
-    return {
-    }
+    return {}
   },
 
   layout: 'default',
@@ -43,8 +41,11 @@ export default {
   },
   methods: {
     ...mapActions(['nuxtServerInit']),
-    tabItem(key){
+    tabItem(key) {
       this.$router.push(`/${key}`)
+    },
+    addCart(key) {
+      this.$store.dispatch('addCart', key);
     }
   }
 }
@@ -56,15 +57,15 @@ export default {
   position: absolute;
 }
 
-.eventCart{
+.eventCart {
   justify-content: space-around;
 }
 
-.styleLink{
+.styleLink {
   text-decoration: none;
 }
 
-.buttonAddCart{
+.buttonAddCart {
   position: absolute;
   left: 200px;
   color: white;
@@ -72,18 +73,18 @@ export default {
   border-color: #28a745;
 }
 
-.countLaps{
+.countLaps {
   color: #D17581;
 }
 
 
-.styleImg{
+.styleImg {
   top: 0;
   height: 200px;
   width: 200px;
 }
 
-.styleTitle{
+.styleTitle {
   color: #3eaf7c;
 }
 

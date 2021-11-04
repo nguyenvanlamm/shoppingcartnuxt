@@ -25,8 +25,7 @@
 import {mapGetters} from "vuex";
 
 export default {
-  middleware: ['auth', 'check-auth'],
-
+  middleware: 'auth',
   computed: {
     ...mapGetters(['lapTops'])
   }

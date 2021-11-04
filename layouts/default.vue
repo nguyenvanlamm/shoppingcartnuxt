@@ -10,7 +10,7 @@
 import Header from '~/components/Header/hearder'
 import Footer from '~/components/Footer/footer'
 export default {
-  // middleware: 'check-auth',
+  middleware: 'check-auth',
   components:{
     Header,
     Footer

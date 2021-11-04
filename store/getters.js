@@ -5,7 +5,13 @@ export default {
   email(state){
     return state.email
   },
+  token(state){
+    return state.token
+  },
   isAuthted(state){
-    return state.token != null
+    return state.token !== null
+  },
+  lappays(state){
+    return state.lappays
   }
 }

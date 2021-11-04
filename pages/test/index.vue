@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-  middleware: 'check-auth',
+  middleware: 'auth',
 }
 </script>
 

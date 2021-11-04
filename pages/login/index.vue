@@ -16,6 +16,8 @@
 
 <script>
 
+import cookies from "js-cookie"
+
 export default {
   data() {
     return {
@@ -30,9 +32,12 @@ export default {
         password: this.password,
         returnSecureToken: true
       }).then((data) => {
-        this.$store.dispatch('setToken', data.data.idToken);
         localStorage.setItem('token', data.data.idToken);
-        this.$router.push('/')
+        localStorage.setItem('email', this.email)
+        cookies.set('token', data.data.idToken);
+        cookies.set('email', this.email);
+        this.$router.push('/');
+        this.$store.dispatch('setToken', data.data.idToken);
         this.$store.dispatch('setEmail', this.email);
       }).catch((e) => {
         console.log(e)

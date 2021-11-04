@@ -4,16 +4,16 @@
       <nuxt-link class="clearLine" to="/">Online Store</nuxt-link>
     </span>
     <span class="inform">
-      <span class="infor" v-if="email === ''">
+      <span class="infor" v-if="token === null">
         <nuxt-link class="clearLine" to="/login">Login</nuxt-link>
         <nuxt-link class="clearLine" to="/register">Register</nuxt-link>
       </span>
-      <span v-if="email !== ''">
+      <span v-if="token !== null">
         <a class="infor" @click="handlerLogout">Logout {{ email }}</a>
       </span>
       <span class="StylyeBtnCheckOut">
-        <button class="btnCheckOut">Checkout
-        <label>Price</label>
+        <button class="btnCheckOut" @click="checkOutPrice" >Checkout
+        <label>{{1}} (${{100}})</label>
         </button>
       </span>
     </span>
@@ -22,16 +22,23 @@
 
 <script>
 import {mapGetters} from "vuex";
+import cookies from "js-cookie";
 
 export default {
   computed: {
-    ...mapGetters(['email'])
+    ...mapGetters(['email', 'token'])
   },
   methods: {
     handlerLogout() {
-      this.$store.dispatch('setEmail', '')
+      this.$store.dispatch('setEmail', null)
       this.$store.dispatch('clearToken')
       localStorage.removeItem('token')
+      localStorage.removeItem('email')
+      cookies.set('token', '')
+      cookies.set('email', '')
+    },
+    checkOutPrice(){
+      this.$router.push('/paysLaptop')
     }
   }
 }
